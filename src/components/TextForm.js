@@ -59,14 +59,15 @@ export default function TextForm(props) {
             id="myform"
             rows="8"
             style={{
-              backgroundColor: props.mode === "dark" ? "grey" : "white",
+              backgroundColor: props.mode === "dark" ? "#13466e" : "white",
               color: props.mode === "dark" ? "white" : "#042743",
             }}
           ></textarea>
         </div>
         <button
           type="button"
-          className="btn btn-primary mx-3"
+          disabled={text.length === 0}
+          className="btn btn-primary mx-1 my-1"
           onClick={handleUpClick}
         >
           Convert to UpperCase
@@ -74,7 +75,8 @@ export default function TextForm(props) {
 
         <button
           type="button"
-          className="btn btn-primary mx-2 "
+          disabled={text.length === 0}
+          className="btn btn-primary mx-1 my-1"
           onClick={handleLoclick}
         >
           Convert to LowerCase
@@ -82,24 +84,32 @@ export default function TextForm(props) {
 
         <button
           type="button"
-          className="btn btn-primary mx-2 "
+          disabled={text.length === 0}
+          className="btn btn-primary mx-1 my-1"
           onClick={handleClclick}
         >
           Clear Text
         </button>
         <button
           type="button"
-          className="btn btn-primary mx-2"
+          disabled={text.length === 0}
+          className="btn btn-primary mx-1 my-1"
           onClick={handleCapitalizeclick}
         >
           Sentence Case
         </button>
-        <button type="button" className="btn btn-primary " onClick={handleCopy}>
+        <button
+          type="button"
+          disabled={text.length === 0}
+          className="btn btn-primary "
+          onClick={handleCopy}
+        >
           Copy text
         </button>
         <button
           type="button"
-          className="btn btn-primary mx-2 "
+          disabled={text.length === 0}
+          className="btn btn-primary mx-1 my-1"
           onClick={handleExtraSpace}
         >
           Remove Extra Space
@@ -115,9 +125,24 @@ export default function TextForm(props) {
           {text.trim() === "" ? 0.0 : text.match(/\S+/g).length} words{" "}
           {text.replace(/\s+/g, "").length} Characters
         </p>
-        <p>{0.008 * text.split(" ").length} Minutes read</p>
+        {/* <p>
+          {
+            text.split(" ").filter((element) => {
+              return element.length !== 0;
+            }).length
+          }{" "}
+          words and {text.length} characters
+        </p> */}
+        <p>
+          {0.008 *
+            text.split(" ").filter((element) => {
+              return element.length !== 0;
+            }).length}{" "}
+          Minutes read
+        </p>
+
         <h3>Privew</h3>
-        <p> {text.length > 0 ? text : "enter something about upper form"}</p>
+        <p> {text.length > 0 ? text : "Nothing to privew!"}</p>
       </div>
     </>
   );

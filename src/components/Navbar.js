@@ -8,9 +8,12 @@ export default function Navbar(props) {
       className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}
     >
       <div className="container-fluid">
-        <a className="navbar-brand" href="#">
+        <Link className="navbar-brand" to="/">
           {props.title}
-        </a>
+        </Link>
+        {/* <li className="navbar-brand" href="#">
+          {props.title}
+        </li> */}
         <button
           className="navbar-toggler"
           type="button"
@@ -25,22 +28,68 @@ export default function Navbar(props) {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              {/* <Link className="nav-link active" aria-current="page" to="/">
+              <Link className="nav-link " aria-current="page" to="/">
                 Home
-              </Link> */}
-              <li className="nav-link active" aria-current="page" href="#">
+              </Link>
+              {/* <li className="nav-link active" aria-current="page" href="#">
                 Home
-              </li>
+              </li> */}
             </li>
             <li className="nav-item">
-              {/* <Link className="nav-link active" to="/about">
+              <Link className="nav-link " to="/about">
                 {props.aboutText}
-              </Link> */}
-              <li className="nav-link active" href="#">
+              </Link>
+              {/* <li className="nav-link active" href="#">
                 {props.aboutText}
-              </li>
+              </li> */}
             </li>
+            {/* <div className="d-flex" style={{ border: "2px" }}>
+              <div
+                className="bg-primary rounded mx-2"
+                onClick={() => {
+                  props.togglemode("primary");
+                }}
+                style={{ height: "30px", width: "30px", cursor: "pointer" }}
+              ></div>
+              <div
+                className="bg-danger rounded mx-2"
+                onClick={() => {
+                  props.togglemode("danger");
+                }}
+                style={{ height: "30px", width: "30px", cursor: "pointer" }}
+              ></div>
+              <div
+                className="bg-success rounded mx-2"
+                onClick={() => {
+                  props.togglemode("success");
+                }}
+                style={{ height: "30px", width: "30px", cursor: "pointer" }}
+              ></div>
+              <div
+                className="bg-warning rounded mx-2"
+                onClick={() => {
+                  props.togglemode("warning");
+                }}
+                style={{ height: "30px", width: "30px", cursor: "pointer" }}
+              ></div>
+              <div
+                className="bg-light rounded mx-2"
+                onClick={() => {
+                  props.togglemode("light");
+                }}
+                style={{ height: "30px", width: "30px", cursor: "pointer" }}
+              ></div>
+
+              <div
+                className="bg-dark rounded mx-2"
+                onClick={() => {
+                  props.togglemode("dark");
+                }}
+                style={{ height: "30px", width: "30px", cursor: "pointer" }}
+              ></div>
+            </div> */}
           </ul>
+
           <div
             className={`form-check form-switch text-${
               props.mode === "light" ? "dark" : "light"
